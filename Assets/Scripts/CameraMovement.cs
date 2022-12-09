@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -22,23 +22,43 @@ public class CameraMovement : MonoBehaviour
         transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.forward * Time.deltaTime * 10;
+            MoveForward();
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= transform.forward * Time.deltaTime * 10;
+            MoveBackward();
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= transform.right * Time.deltaTime * 10;
+            MoveLeft();
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += transform.right * Time.deltaTime * 10;
+            MoveRight();
         } 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            transform.position += transform.up * Time.deltaTime * 10;
+            MoveUp();
         }
+    }
+
+    void MoveForward() {
+        transform.position = new Vector3(transform.position.x + (transform.forward * Time.deltaTime * 10).x, transform.position.y, transform.position.z + (transform.forward * Time.deltaTime * 10).z);
+    }
+
+    void MoveBackward() {
+        transform.position = new Vector3(transform.position.x - (transform.forward * Time.deltaTime * 10).x, transform.position.y, transform.position.z - (transform.forward * Time.deltaTime * 10).z);
+    }
+
+    void MoveLeft() {
+        transform.position = new Vector3(transform.position.x - (transform.right * Time.deltaTime * 10).x, transform.position.y, transform.position.z - (transform.right * Time.deltaTime * 10).z);
+    }
+
+    void MoveRight() {
+        transform.position = new Vector3(transform.position.x + (transform.right * Time.deltaTime * 10).x, transform.position.y, transform.position.z + (transform.right * Time.deltaTime * 10).z);
+    }
+
+    void MoveUp() {
+        transform.position = new Vector3(transform.position.x, transform.position.y + Time.deltaTime * 10, transform.position.z);
     }
 }
