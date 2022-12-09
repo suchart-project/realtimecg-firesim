@@ -28,27 +28,27 @@ public class CameraMovement : MonoBehaviour
             rotationX += Input.GetAxis("Mouse X") * sensitivityX;
             rotationY += Input.GetAxis("Mouse Y") * sensitivityX;
             transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) && (IsInBounds(transform.position.x, transform.position.y, transform.position.z) ||  IsInBounds(transform.position.x + (transform.forward * Time.deltaTime * 10).x, transform.position.y, transform.position.z + (transform.forward * Time.deltaTime * 10).z)))
             {
                 MoveForward();
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) && (IsInBounds(transform.position.x, transform.position.y, transform.position.z) ||  IsInBounds(transform.position.x - (transform.forward * Time.deltaTime * 10).x, transform.position.y, transform.position.z - (transform.forward * Time.deltaTime * 10).z)))
             {
                 MoveBackward();
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) && (IsInBounds(transform.position.x, transform.position.y, transform.position.z) ||  IsInBounds(transform.position.x - (transform.right * Time.deltaTime * 10).x, transform.position.y, transform.position.z - (transform.right * Time.deltaTime * 10).z)))
             {
                 MoveLeft();
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) && (IsInBounds(transform.position.x, transform.position.y, transform.position.z) ||  IsInBounds(transform.position.x + (transform.right * Time.deltaTime * 10).x, transform.position.y, transform.position.z + (transform.right * Time.deltaTime * 10).z)))
             {
                 MoveRight();
             } 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) && transform.position.y < 20)
             {
                 MoveUp();
             }
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && transform.position.y > 4)
             {
                 MoveDown();
             }
@@ -65,6 +65,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     void MoveForward() {
+        Debug.Log("on move");
         transform.position = new Vector3(transform.position.x + (transform.forward * Time.deltaTime * 10).x, transform.position.y, transform.position.z + (transform.forward * Time.deltaTime * 10).z);
     }
 
@@ -86,5 +87,9 @@ public class CameraMovement : MonoBehaviour
 
     void MoveDown() {
         transform.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime * 10, transform.position.z);
+    }
+    
+    bool IsInBounds(float x, float y, float z) {
+        return x > -25 && x < 20 && z > -15 && z < 26;
     }
 }

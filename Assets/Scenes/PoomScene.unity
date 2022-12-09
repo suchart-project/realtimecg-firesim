@@ -24481,6 +24481,10 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 0.8920994
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: dddb6335529eb194f83735c0842fff4f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dddb6335529eb194f83735c0842fff4f, type: 3}
 --- !u!1 &631411624
@@ -65860,7 +65864,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   LifetimeByEmitterSpeedModule:
-    enabled: 0
+    enabled: 1
     m_Curve:
       serializedVersion: 2
       minMaxState: 1
@@ -65870,8 +65874,8 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 1
+          time: 0.049106598
+          value: 0.39189148
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -67356,7 +67360,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -68487,6 +68491,7 @@ MonoBehaviour:
   ps: {fileID: 1762266906}
   cam: {fileID: 159438130}
   buttonPlay: {fileID: 155394984}
+  ground: {fileID: 970070611}
 --- !u!1 &1765475302
 GameObject:
   m_ObjectHideFlags: 0

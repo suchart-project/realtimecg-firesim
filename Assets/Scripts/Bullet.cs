@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public ParticleSystem ps;
     public Camera cam;
     public GameObject buttonPlay;
+    public GameObject ground;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class Bullet : MonoBehaviour
         {
             ps.Stop();
         }
+        var main = ps.main;
+        main.startLifetime = (cam.transform.position.y - ground.transform.position.y) / main.startSpeed.constant;
     }
 
     void SetDirection() {
