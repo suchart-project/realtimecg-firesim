@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     // get particle system
     public ParticleSystem ps;
     public Camera cam;
+    public GameObject buttonPlay;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         SetDirection();
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && buttonPlay.activeSelf == false)
         {   
             ps.Play();
         }

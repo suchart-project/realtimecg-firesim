@@ -8,6 +8,7 @@ public class BulletSelector : MonoBehaviour
     public GameObject bullet1;
     public GameObject bullet2;
     public GameObject bullet3;
+    public GameObject buttonPlay;
     public ParticleSystem ps;
     private Color psColor;
     private bool activeBullet1 = false;
@@ -16,6 +17,9 @@ public class BulletSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bullet1.SetActive(false);
+        bullet2.SetActive(false);
+        bullet3.SetActive(false);
         psColor = ps.main.startColor.color;
         // change color of image bullet1
         bullet1.GetComponent<Image>().color = Color.red;
@@ -25,39 +29,50 @@ public class BulletSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if user press tab
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (buttonPlay.activeSelf == false)
         {
-            if (activeBullet1)
+            bullet1.SetActive(true);
+            bullet2.SetActive(true);
+            bullet3.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                bullet1.GetComponent<Image>().color = Color.white;
-                bullet2.GetComponent<Image>().color = Color.red;
-                bullet3.GetComponent<Image>().color = Color.white;
-                SetParticleColor(Color.green);
-                activeBullet1 = false;
-                activeBullet2 = true;
-                activeBullet3 = false;
+                if (activeBullet1)
+                {
+                    bullet1.GetComponent<Image>().color = Color.white;
+                    bullet2.GetComponent<Image>().color = Color.red;
+                    bullet3.GetComponent<Image>().color = Color.white;
+                    SetParticleColor(Color.green);
+                    activeBullet1 = false;
+                    activeBullet2 = true;
+                    activeBullet3 = false;
+                }
+                else if (activeBullet2)
+                {
+                    bullet1.GetComponent<Image>().color = Color.white;
+                    bullet2.GetComponent<Image>().color = Color.white;
+                    bullet3.GetComponent<Image>().color = Color.red;
+                    SetParticleColor(Color.yellow);
+                    activeBullet1 = false;
+                    activeBullet2 = false;
+                    activeBullet3 = true;
+                }
+                else if (activeBullet3)
+                {
+                    bullet1.GetComponent<Image>().color = Color.red;
+                    bullet2.GetComponent<Image>().color = Color.white;
+                    bullet3.GetComponent<Image>().color = Color.white;
+                    SetParticleColor(psColor);
+                    activeBullet1 = true;
+                    activeBullet2 = false;
+                    activeBullet3 = false;
+                }
             }
-            else if (activeBullet2)
-            {
-                bullet1.GetComponent<Image>().color = Color.white;
-                bullet2.GetComponent<Image>().color = Color.white;
-                bullet3.GetComponent<Image>().color = Color.red;
-                SetParticleColor(Color.yellow);
-                activeBullet1 = false;
-                activeBullet2 = false;
-                activeBullet3 = true;
-            }
-            else if (activeBullet3)
-            {
-                bullet1.GetComponent<Image>().color = Color.red;
-                bullet2.GetComponent<Image>().color = Color.white;
-                bullet3.GetComponent<Image>().color = Color.white;
-                SetParticleColor(psColor);
-                activeBullet1 = true;
-                activeBullet2 = false;
-                activeBullet3 = false;
-            }
+        }
+        else
+        {
+            bullet1.SetActive(false);
+            bullet2.SetActive(false);
+            bullet3.SetActive(false);
         }
     }
 

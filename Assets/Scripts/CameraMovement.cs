@@ -6,39 +6,53 @@ public class CameraMovement : MonoBehaviour
 {
     float rotationX = 0f;
     float rotationY = 0f;
+    public GameObject buttonPlay;
+    public GameObject flareGun;
 
     public float sensitivityX = 15f;
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        flareGun.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rotationX += Input.GetAxis("Mouse X") * sensitivityX;
-        rotationY += Input.GetAxis("Mouse Y") * sensitivityX;
-        transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-        if (Input.GetKey(KeyCode.W))
-        {
-            MoveForward();
+        if (!buttonPlay.activeSelf) {
+            Cursor.lockState = CursorLockMode.Locked;
+            flareGun.SetActive(true);
+            rotationX += Input.GetAxis("Mouse X") * sensitivityX;
+            rotationY += Input.GetAxis("Mouse Y") * sensitivityX;
+            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+            if (Input.GetKey(KeyCode.W))
+            {
+                MoveForward();
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                MoveBackward();
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                MoveLeft();
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                MoveRight();
+            } 
+            if (Input.GetKey(KeyCode.Space))
+            {
+                MoveUp();
+            }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                buttonPlay.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;   
+            }
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            MoveBackward();
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            MoveLeft();
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            MoveRight();
-        } 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            MoveUp();
+        else {
+            flareGun.SetActive(false);
         }
     }
 
