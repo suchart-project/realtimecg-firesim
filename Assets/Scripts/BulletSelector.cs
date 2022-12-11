@@ -8,6 +8,9 @@ public class BulletSelector : MonoBehaviour
     public GameObject bullet1;
     public GameObject bullet2;
     public GameObject bullet3;
+    public GameObject imgBullet1;
+    public GameObject imgBullet2;
+    public GameObject imgBullet3;
     public GameObject buttonPlay;
     public ParticleSystem ps;
     private Color psColor;
@@ -20,9 +23,12 @@ public class BulletSelector : MonoBehaviour
         bullet1.SetActive(false);
         bullet2.SetActive(false);
         bullet3.SetActive(false);
+        imgBullet1.SetActive(false);
+        imgBullet2.SetActive(false);
+        imgBullet3.SetActive(false);
         psColor = ps.main.startColor.color;
         // change color of image bullet1
-        bullet1.GetComponent<Image>().color = Color.red;
+        bullet1.GetComponent<Image>().color = Color.gray;
         activeBullet1 = true;
     }
 
@@ -34,14 +40,17 @@ public class BulletSelector : MonoBehaviour
             bullet1.SetActive(true);
             bullet2.SetActive(true);
             bullet3.SetActive(true);
+            imgBullet1.SetActive(true);
+            imgBullet2.SetActive(true);
+            imgBullet3.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 if (activeBullet1)
                 {
                     bullet1.GetComponent<Image>().color = Color.white;
-                    bullet2.GetComponent<Image>().color = Color.red;
+                    bullet2.GetComponent<Image>().color = Color.gray;
                     bullet3.GetComponent<Image>().color = Color.white;
-                    SetParticleColor(Color.green);
+                    SetParticleColor(Color.cyan);
                     activeBullet1 = false;
                     activeBullet2 = true;
                     activeBullet3 = false;
@@ -50,7 +59,7 @@ public class BulletSelector : MonoBehaviour
                 {
                     bullet1.GetComponent<Image>().color = Color.white;
                     bullet2.GetComponent<Image>().color = Color.white;
-                    bullet3.GetComponent<Image>().color = Color.red;
+                    bullet3.GetComponent<Image>().color = Color.gray;
                     SetParticleColor(Color.yellow);
                     activeBullet1 = false;
                     activeBullet2 = false;
@@ -58,7 +67,7 @@ public class BulletSelector : MonoBehaviour
                 }
                 else if (activeBullet3)
                 {
-                    bullet1.GetComponent<Image>().color = Color.red;
+                    bullet1.GetComponent<Image>().color = Color.gray;
                     bullet2.GetComponent<Image>().color = Color.white;
                     bullet3.GetComponent<Image>().color = Color.white;
                     SetParticleColor(psColor);
@@ -73,6 +82,9 @@ public class BulletSelector : MonoBehaviour
             bullet1.SetActive(false);
             bullet2.SetActive(false);
             bullet3.SetActive(false);
+            imgBullet1.SetActive(false);
+            imgBullet2.SetActive(false);
+            imgBullet3.SetActive(false);
         }
     }
 
