@@ -8,10 +8,10 @@ public class Bullet : MonoBehaviour
     public ParticleSystem ps;
     public Camera cam;
     public GameObject buttonPlay;
-    public GameObject ground;
-    // public float startx;
-    // public float starty;
-    // public float startz;
+    public GameObject gun;
+    public float positionX;
+    public float positionY;
+    public float positionZ;
 
     // Start is called before the first frame update
     void Start()
@@ -32,24 +32,12 @@ public class Bullet : MonoBehaviour
         {
             ps.Stop();
         }
-        // var main = ps.main;
-        // main.startLifetime = (cam.transform.position.y - ground.transform.position.y) / main.startSpeed.constant;
     }
 
     void SetDirection() {
-        // ps.transform.position = new Vector3(cam.transform.position.x + 10 + cam.transform.forward.x * 2, cam.transform.position.y +  cam.transform.forward.y * 2, cam.transform.position.z + 10 + cam.transform.forward.z * 2);
-        ps.transform.position = cam.transform.position + cam.transform.forward * 2;
-        // set rotation
-        // var shape = ps.shape;
-        // shape.transform.rotation = cam.transform.rotation.eulerAngles;
-        // Debug.Log(cam.transform.rotation.eulerAngles);
-        // Debug.Log(ps.shape.rotation);
+        ps.transform.position = gun.transform.position + new Vector3(positionX, positionY, positionZ);
         var shape = ps.shape;
         shape.rotation = cam.transform.rotation.eulerAngles;
-        // ps.transform.rotation = cam.transform.rotation.eulerAngles;
+        Debug.Log(shape.rotation);
     }
-
-    // void SetInitialPosition() {
-    //     ps.transform.position = new Vector3(startx, starty, startz);
-    // }
 }

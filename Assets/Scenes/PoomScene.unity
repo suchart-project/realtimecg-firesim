@@ -6313,6 +6313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountExinguishedPerSecond: 1
+  ps: {fileID: 0}
 --- !u!1 &163525981
 GameObject:
   m_ObjectHideFlags: 0
@@ -92804,3 +92805,7 @@ MonoBehaviour:
   cam: {fileID: 159438130}
   buttonPlay: {fileID: 155394984}
   ground: {fileID: 970070611}
+  gun: {fileID: 1112255098}
+  positionX: 0
+  positionY: 0.5
+  positionZ: 0

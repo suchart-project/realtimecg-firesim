@@ -65,7 +65,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     void MoveForward() {
-        Debug.Log("on move");
+        // Debug.Log("on move");
         transform.position = new Vector3(transform.position.x + (transform.forward * Time.deltaTime * 10).x, transform.position.y, transform.position.z + (transform.forward * Time.deltaTime * 10).z);
     }
 
