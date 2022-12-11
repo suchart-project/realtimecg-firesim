@@ -12,6 +12,8 @@ public class Fire : MonoBehaviour
 
     [SerializeField] private ParticleSystem [] fireParticleSystems = new ParticleSystem[0];
     private bool isLit = true;
+    private bool isWind = false;
+    private int counting = 0;
 
     private void ChangeIntensity()
     {
@@ -27,10 +29,32 @@ public class Fire : MonoBehaviour
             return true;
         }
         timeLastWatered = Time.time;
-        currentIntensity -= amount;
+        // currentIntensity -= amount;
         ChangeIntensity();
 
+        for (int i=0;i<fireParticleSystems.Length;i++){
+            var startRotation = fireParticleSystems[i].startRotation;
+            var main = fireParticleSystems[i].main;
+            main.startRotationX = 3*Camera.main.transform.rotation.x;
+            main.startRotationZ = 3*Camera.main.transform.rotation.z;  
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            isWind = true;
+            counting = 200;
+        }
+
         return false;
+    }
+
+    private void SetDefaultDirection() {
+        for (int i=0;i<fireParticleSystems.Length;i++){
+            var startRotation = fireParticleSystems[i].startRotation;
+            var main = fireParticleSystems[i].main;
+            main.startRotationX = 0;
+            main.startRotationZ = 0;  
+        }
     }
 
     
@@ -54,7 +78,12 @@ public class Fire : MonoBehaviour
             currentIntensity += regenRate*Time.deltaTime;
             ChangeIntensity();
         }
-        // ChangeIntensity();
-
+        if (isWind) {
+            counting--;
+            if (counting == 0) {
+                isWind = false;
+                SetDefaultDirection();
+            }
+        }
     }
 }

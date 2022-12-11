@@ -8681,7 +8681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233583602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 3}
+  m_LocalPosition: {x: -2.29, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42738,6 +42738,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198679442476388764, guid: f293a2dcc753a4a489fefe7f8f312d69, type: 3}
       propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198679442476388764, guid: f293a2dcc753a4a489fefe7f8f312d69, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198679442476388764, guid: f293a2dcc753a4a489fefe7f8f312d69, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199266017805695016, guid: f293a2dcc753a4a489fefe7f8f312d69, type: 3}
@@ -77767,6 +77775,7 @@ GameObject:
   - component: {fileID: 3588798824969967569}
   - component: {fileID: 3675982593147294469}
   - component: {fileID: 3676575409809663067}
+  - component: {fileID: 3676575409809663068}
   m_Layer: 0
   m_Name: SmallSplash
   m_TagString: Untagged
@@ -77782,7 +77791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3586905126523466525}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.59, y: -4.29, z: -4.7}
+  m_LocalPosition: {x: 9.63, y: -5.12, z: 0.03}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -92716,6 +92725,23 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3676575409809663068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3586905126523466525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e968cd09eaae45939b3be53c10a106e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterLeak: {fileID: 3676014749952375465}
+  ps: {fileID: 3675611948915325531}
+  startX: 0
+  startY: 0
+  startZ: 0
 --- !u!199 &3677092170532096533
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -92804,7 +92830,6 @@ MonoBehaviour:
   ps: {fileID: 3676014749952375465}
   cam: {fileID: 159438130}
   buttonPlay: {fileID: 155394984}
-  ground: {fileID: 970070611}
   gun: {fileID: 1112255098}
   positionX: 0
   positionY: 0.5
