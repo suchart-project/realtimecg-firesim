@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     public GameObject projectilePrefab3;
     private ParticleSystem ps;
     private int activeProjectileType;
-
+    [SerializeField] private float amountExinguishedPerSecond = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +37,22 @@ public class Bullet : MonoBehaviour
                 ps.Stop();
             }
         }
+        if(activeProjectileType == 1){
+            amountExinguishedPerSecond = 1f;
+        }else if(activeProjectileType== 2){
+            amountExinguishedPerSecond = 0.5f;
+        }else if(activeProjectileType == 3){
+            amountExinguishedPerSecond = 0.1f;
+        }
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 100f)
+        && hit.collider.TryGetComponent(out Fire fire) && Input.GetMouseButton(0)){
+            Debug.Log("Extinguishing fire");
+            fire.TryExtinguish(amountExinguishedPerSecond * Time.deltaTime);
+        }
+
     }
+    
+
 
     // Delete existing child and instantiate new projectile
     public void selectProjectile(int slot)
