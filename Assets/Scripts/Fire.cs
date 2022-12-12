@@ -35,15 +35,36 @@ public class Fire : MonoBehaviour
         for (int i=0;i<fireParticleSystems.Length;i++){
             var startRotation = fireParticleSystems[i].startRotation;
             var main = fireParticleSystems[i].main;
-            main.startRotationX = 3*Camera.main.transform.rotation.x;
-            main.startRotationZ = 3*Camera.main.transform.rotation.z;  
+            // max camera rotation is 90 degrees
+            var rotationX = Camera.main.transform.rotation.x;
+            var rotationY = Camera.main.transform.rotation.y;
+            var rotationZ = Camera.main.transform.rotation.z;
+            if (rotationX > 90){
+                main.startRotationX = 90;    
+            }else if(rotationX < -90){
+                main.startRotationX = -90;
+            }else{
+                main.startRotationX = rotationX;
+            }
+            // if (rotationY > 90){
+            //     main.startRotationY = 90;    
+            // }else if(rotationY < -90){
+            //     main.startRotationY = -90;
+            // }else{
+            //     main.startRotationY = rotationY;
+            // }
+            main.startRotationY = rotationY;
+            if (rotationZ > 90){
+                main.startRotationZ = 90;    
+            }else if(rotationZ < -90){
+                main.startRotationZ = -90;
+            }else{
+                main.startRotationZ = rotationZ;
+            }
+              
         }
-
-        if (Input.GetMouseButton(0))
-        {
-            isWind = true;
-            counting = 200;
-        }
+        isWind = true;
+        counting = 200;
 
         return false;
     }
@@ -53,6 +74,7 @@ public class Fire : MonoBehaviour
             var startRotation = fireParticleSystems[i].startRotation;
             var main = fireParticleSystems[i].main;
             main.startRotationX = 0;
+            main.startRotationY = 0;
             main.startRotationZ = 0;  
         }
     }
