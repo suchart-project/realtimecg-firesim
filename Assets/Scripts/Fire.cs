@@ -23,6 +23,12 @@ public class Fire : MonoBehaviour
 
         }
     }    
+    public void TryLargeStartSize(){
+        for (int i=0;i<fireParticleSystems.Length;i++){
+            var main = fireParticleSystems[i].main;
+            main.startSize = 10; 
+        }
+    }
     public bool TryExtinguish(float amount){
         if(currentIntensity <= 0){
             isLit = false;

@@ -48,6 +48,9 @@ public class Bullet : MonoBehaviour
         && hit.collider.TryGetComponent(out Fire fire) && Input.GetMouseButton(0)){
             Debug.Log("Extinguishing fire");
             fire.TryExtinguish(amountExinguishedPerSecond * Time.deltaTime);
+            if(activeProjectileType == 3){
+                fire.TryLargeStartSize();
+            }
         }
 
     }
