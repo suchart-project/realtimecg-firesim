@@ -12,8 +12,7 @@ public class BulletSelector : MonoBehaviour
     public GameObject imgBullet2;
     public GameObject imgBullet3;
     public GameObject buttonPlay;
-    public ParticleSystem ps;
-    private Color psColor;
+    public GameObject gameObjectWithBulletScript;
     private bool activeBullet1 = false;
     private bool activeBullet2 = false;
     private bool activeBullet3 = false;
@@ -26,9 +25,7 @@ public class BulletSelector : MonoBehaviour
         imgBullet1.SetActive(false);
         imgBullet2.SetActive(false);
         imgBullet3.SetActive(false);
-        psColor = ps.main.startColor.color;
-        // change color of image bullet1
-        bullet1.GetComponent<Image>().color = Color.gray;
+        
         activeBullet1 = true;
     }
 
@@ -50,7 +47,7 @@ public class BulletSelector : MonoBehaviour
                     bullet1.GetComponent<Image>().color = Color.white;
                     bullet2.GetComponent<Image>().color = Color.gray;
                     bullet3.GetComponent<Image>().color = Color.white;
-                    SetParticleColor(Color.cyan);
+                    selectProjectile(2);
                     activeBullet1 = false;
                     activeBullet2 = true;
                     activeBullet3 = false;
@@ -60,7 +57,7 @@ public class BulletSelector : MonoBehaviour
                     bullet1.GetComponent<Image>().color = Color.white;
                     bullet2.GetComponent<Image>().color = Color.white;
                     bullet3.GetComponent<Image>().color = Color.gray;
-                    SetParticleColor(Color.yellow);
+                    selectProjectile(3);
                     activeBullet1 = false;
                     activeBullet2 = false;
                     activeBullet3 = true;
@@ -70,7 +67,7 @@ public class BulletSelector : MonoBehaviour
                     bullet1.GetComponent<Image>().color = Color.gray;
                     bullet2.GetComponent<Image>().color = Color.white;
                     bullet3.GetComponent<Image>().color = Color.white;
-                    SetParticleColor(psColor);
+                    selectProjectile(1);
                     activeBullet1 = true;
                     activeBullet2 = false;
                     activeBullet3 = false;
@@ -88,9 +85,8 @@ public class BulletSelector : MonoBehaviour
         }
     }
 
-    private void SetParticleColor(Color color)
-    {
-        var main = ps.main;
-        main.startColor = color;
+    // Select projectile from gameObjectWithBulletScript
+    private void selectProjectile(int slot) {
+        gameObjectWithBulletScript.GetComponent<Bullet>().selectProjectile(slot);
     }
 }

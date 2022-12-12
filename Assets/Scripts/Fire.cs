@@ -29,7 +29,7 @@ public class Fire : MonoBehaviour
             return true;
         }
         timeLastWatered = Time.time;
-        // currentIntensity -= amount;
+        currentIntensity -= amount;
         ChangeIntensity();
 
         for (int i=0;i<fireParticleSystems.Length;i++){
