@@ -25,6 +25,7 @@ public class BulletSelector : MonoBehaviour
         imgBullet1.SetActive(false);
         imgBullet2.SetActive(false);
         imgBullet3.SetActive(false);
+        bullet1.GetComponent<Image>().color = Color.gray;
         
         activeBullet1 = true;
     }
